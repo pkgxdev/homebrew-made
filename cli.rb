@@ -1,4 +1,4 @@
-class TeaCli < Formula
+class Cli < Formula
   desc "Unified package manager"
   homepage "https://tea.xyz"
   url "https://github.com/teaxyz/cli/releases/download/v0.19.4/tea-0.19.4.tar.xz"
