@@ -1,8 +1,8 @@
 class Cli < Formula
   desc "Unified package manager"
   homepage "https://tea.xyz"
-  url "https://github.com/teaxyz/cli/releases/download/v0.19.4/tea-0.19.4.tar.xz"
-  sha256 "73c57b0f06b444ea26590831defb24b358f40114ab1be2cdf88d0dceb1acd2c9"
+  url "https://github.com/teaxyz/cli/releases/download/v0.19.6/tea-0.19.6.tar.xz"
+  sha256 "aadd4cb2e2a6a81483709cc7158e0f0ddd742813e922e0e86ea55d9fa3c49df6"
   license "Apache-2.0"
 
   livecheck do
@@ -15,7 +15,7 @@ class Cli < Formula
   conflicts_with "tea", because: "both install `tea` binaries"
 
   def install
-    system "deno", "task", "compile", "tea"
+    system "deno", "task", "compile"
 
     bin.install "tea"
   end
