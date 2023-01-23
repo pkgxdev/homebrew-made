@@ -19,15 +19,19 @@ class TeaCli < Formula
 
     bin.install "tea"
   end
+  
+  def post_install
+    system "tea", "--sync"
+  end
 
   def caveats
     <<~EOS
-      Most commands will fail until you run `tea --sync` at least once.
+      tea’s shell magic is its secret sauce †
+      If you want it add the following to your shell’s config file:
 
-      To install tea's shell magic (its secret sauce), add the following
-        to your shell's config file:
-
-      command -v tea && tea --magic --silent | source)
+          source <(tea --magic)
+      
+      > † https://github.com/teaxyz/cli#magic
 
     EOS
   end
