@@ -1,8 +1,8 @@
 class TeaCli < Formula
   desc "Unified package manager"
   homepage "https://tea.xyz"
-  url "https://github.com/teaxyz/cli/releases/download/v0.19.7/tea-0.19.7.tar.xz"
-  sha256 "8b433787cc2e9f6e7846de29ba78e65f835cf9102234223605ff71e4a5829c29"
+  url "https://github.com/teaxyz/cli/releases/download/v0.21.0/tea-0.21.0.tar.xz"
+  sha256 "ed0e6c0cbdaab4b2a1c43150e02363df6ec545d94c5c380fb9077d965fc58dba"
   license "Apache-2.0"
 
   livecheck do
