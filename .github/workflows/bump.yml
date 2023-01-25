@@ -1,0 +1,32 @@
+# h/t https://github.com/jonchang/homebrew-tap/blob/main/.github/workflows/bump.yml
+name: bump version
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up Homebrew
+      uses: Homebrew/actions/setup-homebrew@master
+
+    - name: Set up tea
+      uses: teaxyz/setup@v0
+
+    - name: Bump
+      run: ./.github/actions/bump.ts
+      env:
+        TAP: teaxyz/pkgs
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
