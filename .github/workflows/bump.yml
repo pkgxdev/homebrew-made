@@ -11,21 +11,18 @@ jobs:
   bump:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+    - uses: Homebrew/actions/setup-homebrew@master
+    - uses: teaxyz/setup@v0
 
-    - name: Set up Homebrew
-      uses: Homebrew/actions/setup-homebrew@master
-
-    - name: Set up tea
-      uses: teaxyz/setup@v0
-
-    - name: Bump
-      run: ./.github/actions/bump.ts
+    - run: .github/actions/bump.ts
       env:
         TAP: teaxyz/pkgs
 
-    - name: Push changes
+    - name: test `brew install`
+      run: brew install ./tea-cli.rb
+
+    - name: git push
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
