@@ -10,7 +10,7 @@ args:
   - --allow-write=.
   - --allow-env
   - --unstable
-  - --import-map={{ srcroot }}/.github/actions/import-map.json
+  - --import-map=https://raw.githubusercontent.com/teaxyz/cli/v0.21/import-map.json
 ---*/
 
 import { backticks, run, panic } from "utils"
