@@ -10,7 +10,7 @@ You will need to install tea’s (optional) [shell magic] manually:
 
 ```sh
 $ echo 'source <(tea --magic)' >> ~/.zshrc
-#       ^^ adapt as needed
+#              ^^                 ^^ -- adapt as needed
 ```
 
 [shell magic]: https://github.com/teaxyz/cli#magic
