@@ -31,7 +31,7 @@ class TeaCli < Formula
 
           source <(tea --magic)
       
-      > † https://github.com/teaxyz/cli#magic
+      > † https://docs.tea.xyz/features/magic
     EOS
   end
 
