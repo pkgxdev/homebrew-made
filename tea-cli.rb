@@ -1,8 +1,8 @@
 class TeaCli < Formula
   desc "Unified package manager"
   homepage "https://tea.xyz"
-  url "https://github.com/teaxyz/cli/releases/download/v0.38.2/tea-0.38.2.tar.xz"
-  sha256 "30be938517dc234a0ec03bd05cb2eaede56d7cd9320bd77fe207aeadeb70053b"
+  url "https://github.com/teaxyz/cli/releases/download/v0.38.3/tea-0.38.3.tar.xz"
+  sha256 "d05b38477d72fd01d66092838c948d01acf68e76326081187430666037a8f015"
   license "Apache-2.0"
 
   livecheck do
@@ -11,8 +11,12 @@ class TeaCli < Formula
   end
 
   bottle do
-    root_url "https://github.com/teaxyz/cli/releases/download/v0.38.2"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "be0e4e07a858deee203a4a86b79c6667ce362a94a8140b5b727998a8e8712015"
+    sha256 cellar: :any_skip_relocation, big_sur: "eeeebd7d807841213476f5f4fe98721d9f5452c8a8734b4f5d4de4bb8c61a669"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "35b26cddab9d473e775089c769d6dabc6e1ac8fb8f4d378f44b36dd734a37bac"
+    root_url "https://github.com/teaxyz/homebrew-pkgs/releases/download/v0.38.3"
   end
+
 
   depends_on "deno" => :build
 
