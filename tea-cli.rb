@@ -10,6 +10,10 @@ class TeaCli < Formula
     strategy :github_latest
   end
 
+  bottle do
+    root_url "https://github.com/teaxyz/cli/releases/download/v0.38.2"
+  end
+
   depends_on "deno" => :build
 
   conflicts_with "tea", because: "both install `tea` binaries"
@@ -23,14 +27,14 @@ class TeaCli < Formula
   def caveats
     <<~EOS
       You must sync pantries before most commands will work:
-      
+
           tea --sync -n
-    
+
       tea’s shell magic is its secret sauce †
       If you want it add the following to your shell’s config file:
 
           source <(tea --magic)
-      
+
       > † https://docs.tea.xyz/features/magic
     EOS
   end

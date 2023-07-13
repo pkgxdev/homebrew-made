@@ -11,19 +11,30 @@ jobs:
   bump:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: Homebrew/actions/setup-homebrew@master
-    - uses: teaxyz/setup@v0
+      - uses: actions/checkout@v3
+      - uses: Homebrew/actions/setup-homebrew@master
+      - uses: teaxyz/setup@v0
 
-    - run: .github/actions/bump.ts
-      env:
-        TAP: teaxyz/pkgs
+      - run: .github/actions/bump.ts
+        id: bump
+        env:
+          TAP: teaxyz/pkgs
 
-    - name: test `brew install`
-      run: brew install ./tea-cli.rb
+      - name: git push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
 
-    - name: git push
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
+      - uses: softprops/action-gh-release@v1
+        with:
+          name: ${{steps.bump.outputs.name}} v${{ steps.bump.outputs.version }}
+          tag_name: v${{ steps.bump.outputs.version }}
+          files: bottles/*
+          fail_on_unmatched_files: true
+          generate_release_notes: true
+
+      - name: test `brew install`
+        run: |
+          brew install ./tea-cli.rb
+          tea semverator satisfies ^1 1.0.0
