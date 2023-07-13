@@ -1,0 +1,4 @@
+bottles
+deno.lock
+*.tar.xz
+*.tar.gz
