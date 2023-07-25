@@ -17,8 +17,6 @@ class TeaCli < Formula
     root_url "https://github.com/teaxyz/homebrew-pkgs/releases/download/v0.38.4"
   end
 
-
-
   depends_on "deno" => :build
 
   conflicts_with "tea", because: "both install `tea` binaries"
@@ -31,14 +29,13 @@ class TeaCli < Formula
 
   def caveats
     <<~EOS
-      You must sync pantries before most commands will work:
+      try it out:
 
-          tea --sync -n
+          tea node@18 -e 'console.log("brewing up some tea")'
 
       tea’s shell magic is its secret sauce †
-      If you want it add the following to your shell’s config file:
 
-          source <(tea --magic)
+          tea --magic=install
 
       > † https://docs.tea.xyz/features/magic
     EOS
