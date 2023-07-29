@@ -1,8 +1,8 @@
 class TeaCli < Formula
   desc "Unified package manager"
   homepage "https://tea.xyz"
-  url "https://github.com/teaxyz/cli/releases/download/v0.39.3/tea-0.39.3.tar.xz"
-  sha256 "8253b39415eff78b9de0ca856038428a783ff0b21d3a976bcd8c60a4292c3fe8"
+  url "https://github.com/teaxyz/cli/releases/download/v0.39.4/tea-0.39.4.tar.xz"
+  sha256 "3ae120b842c4996c2ddb844ebb950c6e74dd53d74c48b8f3f3ac3850d51a4d0c"
   license "Apache-2.0"
 
   livecheck do
@@ -11,11 +11,12 @@ class TeaCli < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "dda82af1e777fbf75777a65c66aa326ca56cdb90460fb5a3ddf39d856e565a0e"
-    sha256 cellar: :any_skip_relocation, big_sur: "cf79c950f14e975b8427daa415689c190ab85a160e9667079854c94e2edb8f6c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "d88930027226e8ae156ef4b88a8921140a6ff55fb335a0dab0eb602e96a9f3c5"
-    root_url "https://github.com/teaxyz/homebrew-pkgs/releases/download/v0.39.3"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "0a8e970c997254a117533473604a30afe28f465b1376688182d522af7a342a60"
+    sha256 cellar: :any_skip_relocation, big_sur: "3a994b7f92c0028008bdedf246e85425999187165618fa91e56cca4fb1c2a7d5"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "7e5248096ef6244222f2c31cc20018c5312d2b7934d0391609f27497623f1926"
+    root_url "https://github.com/teaxyz/homebrew-pkgs/releases/download/v0.39.4"
   end
+
 
 
 
