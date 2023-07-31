@@ -13,14 +13,13 @@ class TeaCli < Formula
   bottle do
     sha256 cellar: :any_skip_relocation, arm64_big_sur: "0a8e970c997254a117533473604a30afe28f465b1376688182d522af7a342a60"
     sha256 cellar: :any_skip_relocation, big_sur: "3a994b7f92c0028008bdedf246e85425999187165618fa91e56cca4fb1c2a7d5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "7e5248096ef6244222f2c31cc20018c5312d2b7934d0391609f27497623f1926"
+    # Linux bottles fail currently: patchelf breaks deno compiled binaries.
+    # https://github.com/teaxyz/brewkit/blob/main/share/brewkit/fix-elf.ts#L38-L42
+    # and it's not possible to skip relocation in linuxbrew:
+    # https://github.com/Homebrew/brew/blob/d1f60aea49d35fc0ba8f02a1f4fd26d0a369e071/Library/Homebrew/extend/os/linux/software_spec.rb
+    #sha256 cellar: :any_skip_relocation, x86_64_linux: "7e5248096ef6244222f2c31cc20018c5312d2b7934d0391609f27497623f1926"
     root_url "https://github.com/teaxyz/homebrew-pkgs/releases/download/v0.39.4"
   end
-
-
-
-
-
 
   depends_on "deno" => :build
 
