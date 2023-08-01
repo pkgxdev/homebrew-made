@@ -1,8 +1,8 @@
 class TeaCli < Formula
   desc "Unified package manager"
   homepage "https://tea.xyz"
-  url "https://github.com/teaxyz/cli/releases/download/v0.39.4/tea-0.39.4.tar.xz"
-  sha256 "3ae120b842c4996c2ddb844ebb950c6e74dd53d74c48b8f3f3ac3850d51a4d0c"
+  url "https://github.com/teaxyz/cli/releases/download/v0.39.5/tea-0.39.5.tar.xz"
+  sha256 "f6ce28751654f9c7a96f49690dba171753e0d1c44416f6a9e681203112a4b694"
   license "Apache-2.0"
 
   livecheck do
@@ -11,12 +11,15 @@ class TeaCli < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "0a8e970c997254a117533473604a30afe28f465b1376688182d522af7a342a60"
-    sha256 cellar: :any_skip_relocation, big_sur: "3a994b7f92c0028008bdedf246e85425999187165618fa91e56cca4fb1c2a7d5"
-    # Linux bottles fail currently: patchelf breaks deno compiled binaries.
-    # https://github.com/teaxyz/brewkit/blob/main/share/brewkit/fix-elf.ts#L38-L42
-    # and it's not possible to skip relocation in linuxbrew:
-    # https://github.com/Homebrew/brew/blob/d1f60aea49d35fc0ba8f02a1f4fd26d0a369e071/Library/Homebrew/extend/os/linux/software_spec.rb
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "3af398467295b3666e14bd315a252b3cba2fa8b70c04d851d4b9d51666ae4ed9"
+    sha256 cellar: :any_skip_relocation, big_sur: "a6b273b1347b97a1a09f26ba8126952a744e371b71ef610db5b6c7bb5233e77a"
+      # Linux bottles fail currently: patchelf breaks deno compiled binaries.
+      # https://github.com/teaxyz/brewkit/blob/main/share/brewkit/fix-elf.ts#L38-L42
+      # and it's not possible to skip relocation in linuxbrew:
+      # https://github.com/Homebrew/brew/blob/d1f60aea49d35fc0ba8f02a1f4fd26d0a369e071/Library/Homebrew/extend/os/linux/software_spec.rb
+      #sha256 cellar: :any_skip_relocation, x86_64_linux: "363590beb113b53bb80fc52f0b1a547ed48451087db3d741ca5786380081d698"
+    root_url "https://github.com/teaxyz/homebrew-pkgs/releases/download/v0.39.5"
+  end/os/linux/software_spec.rb
     #sha256 cellar: :any_skip_relocation, x86_64_linux: "7e5248096ef6244222f2c31cc20018c5312d2b7934d0391609f27497623f1926"
     root_url "https://github.com/teaxyz/homebrew-pkgs/releases/download/v0.39.4"
   end
