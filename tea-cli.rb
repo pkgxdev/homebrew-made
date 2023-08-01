@@ -1,5 +1,5 @@
 class TeaCli < Formula
-  desc "Unified package manager"
+  desc "builders ❤️ tea"
   homepage "https://tea.xyz"
   url "https://github.com/teaxyz/cli/releases/download/v0.39.5/tea-0.39.5.tar.xz"
   sha256 "f6ce28751654f9c7a96f49690dba171753e0d1c44416f6a9e681203112a4b694"
@@ -17,11 +17,7 @@ class TeaCli < Formula
       # https://github.com/teaxyz/brewkit/blob/main/share/brewkit/fix-elf.ts#L38-L42
       # and it's not possible to skip relocation in linuxbrew:
       # https://github.com/Homebrew/brew/blob/d1f60aea49d35fc0ba8f02a1f4fd26d0a369e071/Library/Homebrew/extend/os/linux/software_spec.rb
-      #sha256 cellar: :any_skip_relocation, x86_64_linux: "363590beb113b53bb80fc52f0b1a547ed48451087db3d741ca5786380081d698"
     root_url "https://github.com/teaxyz/homebrew-pkgs/releases/download/v0.39.5"
-  end/os/linux/software_spec.rb
-    #sha256 cellar: :any_skip_relocation, x86_64_linux: "7e5248096ef6244222f2c31cc20018c5312d2b7934d0391609f27497623f1926"
-    root_url "https://github.com/teaxyz/homebrew-pkgs/releases/download/v0.39.4"
   end
 
   depends_on "deno" => :build
