@@ -1,8 +1,8 @@
 class TeaCli < Formula
   desc "builders ❤️ tea"
   homepage "https://tea.xyz"
-  url "https://github.com/teaxyz/cli/releases/download/v0.39.5/tea-0.39.5.tar.xz"
-  sha256 "f6ce28751654f9c7a96f49690dba171753e0d1c44416f6a9e681203112a4b694"
+  url "https://github.com/teaxyz/cli/releases/download/v0.39.6/tea-0.39.6.tar.xz"
+  sha256 "32f0e6591703e1267b5556210a3bc27c37afeae0c57be88ce813faae5497cc04"
   license "Apache-2.0"
 
   livecheck do
@@ -11,13 +11,14 @@ class TeaCli < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "3af398467295b3666e14bd315a252b3cba2fa8b70c04d851d4b9d51666ae4ed9"
-    sha256 cellar: :any_skip_relocation, big_sur: "a6b273b1347b97a1a09f26ba8126952a744e371b71ef610db5b6c7bb5233e77a"
-      # Linux bottles fail currently: patchelf breaks deno compiled binaries.
-      # https://github.com/teaxyz/brewkit/blob/main/share/brewkit/fix-elf.ts#L38-L42
-      # and it's not possible to skip relocation in linuxbrew:
-      # https://github.com/Homebrew/brew/blob/d1f60aea49d35fc0ba8f02a1f4fd26d0a369e071/Library/Homebrew/extend/os/linux/software_spec.rb
-    root_url "https://github.com/teaxyz/homebrew-pkgs/releases/download/v0.39.5"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "b330a7fa1465dd321a76048a8300713b126821ccd7a8b92b38221a8ae012be1e"
+    sha256 cellar: :any_skip_relocation, big_sur: "e28c5dfc43497c78a3e0e8fdd92ece7cd328038369b891c37872ad8a6c8dec71"
+    # Linux bottles fail currently: patchelf breaks deno compiled binaries.
+    # https://github.com/teaxyz/brewkit/blob/main/share/brewkit/fix-elf.ts#L38-L42
+    # and it's not possible to skip relocation in linuxbrew:
+    # https://github.com/Homebrew/brew/blob/d1f60aea49d35fc0ba8f02a1f4fd26d0a369e071/Library/Homebrew/extend/os/linux/software_spec.rb
+    #sha256 cellar: :any_skip_relocation, x86_64_linux: "0316d7287f595ae9c57760e7d4adc220a7ed1081683ecfd828bbfb852ae7207a"
+    root_url "https://github.com/teaxyz/homebrew-pkgs/releases/download/v0.39.6"
   end
 
   depends_on "deno" => :build
