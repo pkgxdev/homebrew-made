@@ -1,25 +1,28 @@
-#!/usr/bin/env -S tea -E
-
-/*---
-args:
-  - deno
-  - run
-  - --allow-net
-  - --allow-run
-  - --allow-read
-  - --allow-write
-  - --allow-env
-  - --unstable
----*/
+#!/usr/bin/env -S tea deno run --allow-net --allow-run --allow-read --allow-write --allow-env --unstable
 
 import { backticks, run, panic } from "utils"
 import { basename } from "deno/path/mod.ts"
 import { crypto, toHashString } from "deno/crypto/mod.ts"
 
-const tap = Deno.env.get("TAP") ?? panic("No TAP specified")
 const rootUrl = "https://github.com/teaxyz/homebrew-pkgs/releases/download"
 
-const livecheck: LCResults[] = JSON.parse(await backticks({ cmd: ["brew", "livecheck", "--quiet", "--newer-only", "--full-name", "--json", `--tap=${tap}`] }))
+const livecheck: LCResults[] = await (async () => {
+  if (Deno.args[0]) {
+    const [current, latest] = Deno.args
+    return [{
+      formula: 'tea-cli',
+      version: {
+        outdated: true,
+        current, latest
+      }
+    }]
+  } else {
+    const tap = Deno.env.get("TAP") ?? panic("No TAP specified")
+    return JSON.parse(await backticks({ cmd: [
+      "brew", "livecheck", "--quiet", "--newer-only", "--full-name", "--json", `--tap=${tap}`
+    ]}))
+  }
+})()
 // const livecheck: LCResults[] = JSON.parse(await backticks({ cmd: ["brew", "livecheck", "--quiet", "--newer-only", "--full-name", "--json", `./tea-cli.rb`] }))
 
 if (livecheck.length === 0) {

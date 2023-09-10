@@ -6,6 +6,14 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      version:
+        description: current version & new version space separated
+        required: false
+
+concurrency:
+  group: bump/${{ github.event.inputs.version || 'livecheck' }}
+  cancel-in-progress: true
 
 jobs:
   bump:
@@ -15,7 +23,7 @@ jobs:
       - uses: Homebrew/actions/setup-homebrew@master
       - uses: teaxyz/setup@v0
 
-      - run: .github/actions/bump.ts
+      - run: .github/actions/bump.ts ${{ github.event.inputs.version }}
         id: bump
         env:
           TAP: teaxyz/pkgs
