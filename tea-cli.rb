@@ -35,13 +35,7 @@ class TeaCli < Formula
     <<~EOS
       try it out:
 
-          tea node@18 -e 'console.log("brewing up some tea")'
-
-      tea’s shell magic is its secret sauce †
-
-          tea --magic=install
-
-      > † https://docs.tea.xyz/features/magic
+          tea node@18 --eval 'console.log("brewing up some tea")'
     EOS
   end
 
