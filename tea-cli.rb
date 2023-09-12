@@ -1,7 +1,7 @@
 class TeaCli < Formula
   desc "builders ❤️ tea"
   homepage "https://tea.xyz"
-  url "https://github.com/teaxyz/cli/releases/download/v0.39.6/tea-0.39.6.tar.xz"
+  url "https://github.com/teaxyz/cli/releases/download/v1.0.0-alpha.1/tea-1.0.0-alpha.1.tar.xz"
   sha256 "32f0e6591703e1267b5556210a3bc27c37afeae0c57be88ce813faae5497cc04"
   license "Apache-2.0"
 
