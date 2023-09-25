@@ -1,8 +1,8 @@
 class TeaCli < Formula
   desc "builders ❤️ tea"
   homepage "https://tea.xyz"
-  url "https://github.com/teaxyz/cli/releases/download/v1.0.0-alpha.3/tea-1.0.0-alpha.3.tar.xz"
-  sha256 "a8981b8a540bb6bd9856d45cd4c5a0f03a97c0a1591f4d7255ffda6b21be923c"
+  url "https://github.com/teaxyz/cli/releases/download/v1.0.0-alpha.4/tea-1.0.0-alpha.4.tar.xz"
+  sha256 "fbad7439b55fdc43c2b69ad5fbd76556326e89e749165c80f46761dd4b912b22"
   license "Apache-2.0"
 
   livecheck do
@@ -11,14 +11,14 @@ class TeaCli < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "d061745595088f17221a0bcd3bdb2e8e2286f08d217743993eb6e5aabe80db42"
-    sha256 cellar: :any_skip_relocation, big_sur: "ea6dbcc9dcc36200ceb60b8525cac3208bcb989be38ba8d8f1a5c48310182371"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "750c31e752ff55dfc63bbc1c2255c0e6cfe1db0ce3aaaf61809f2fa05597d139"
+    sha256 cellar: :any_skip_relocation, big_sur: "f1d01c48a85caa5635a3f5bf6c25d59ecb87451091240249233b54e59ca63ce0"
     # Linux bottles fail currently: patchelf breaks deno compiled binaries.
     # https://github.com/teaxyz/brewkit/blob/main/share/brewkit/fix-elf.ts#L38-L42
     # and it's not possible to skip relocation in linuxbrew:
     # https://github.com/Homebrew/brew/blob/d1f60aea49d35fc0ba8f02a1f4fd26d0a369e071/Library/Homebrew/extend/os/linux/software_spec.rb
-    #sha256 cellar: :any_skip_relocation, x86_64_linux: "88bebb37a82c5e2005e70347c853c593d3e5b31cc31a662a982e5b422926871a"
-    root_url "https://github.com/teaxyz/homebrew-pkgs/releases/download/v1.0.0-alpha.3"
+    #sha256 cellar: :any_skip_relocation, x86_64_linux: "5d6267b14bfef33c80524867b9089adf830677c62cbd5ea662daed2a81e10d59"
+    root_url "https://github.com/teaxyz/homebrew-pkgs/releases/download/v1.0.0-alpha.4"
   end
 
   depends_on "deno" => :build
