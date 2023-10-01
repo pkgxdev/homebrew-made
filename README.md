@@ -1,5 +1,5 @@
-# Installing `tea` with Homebrew
+# Installing `pkgx` with Homebrew
 
 ```sh
-$ brew install teaxyz/pkgs/tea-cli
+$ brew install pkgxdev/made/pkgx
 ```

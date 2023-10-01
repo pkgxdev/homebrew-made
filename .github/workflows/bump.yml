@@ -18,15 +18,17 @@ concurrency:
 jobs:
   bump:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
       - uses: Homebrew/actions/setup-homebrew@master
-      - uses: teaxyz/setup@v0
+      - uses: pkgxdev/setup@v1
 
       - run: .github/actions/bump.ts ${{ github.event.inputs.version }}
         id: bump
         env:
-          TAP: teaxyz/pkgs
+          TAP: pkgxdev/made
 
       - name: git push
         uses: ad-m/github-push-action@master
@@ -44,5 +46,5 @@ jobs:
 
       - name: test `brew install`
         run: |
-          brew install ./tea-cli.rb
-          tea semverator satisfies ^1 1.0.0
+          brew install ./pkgx.rb
+          pkgx semverator satisfies ^1 1.0.0

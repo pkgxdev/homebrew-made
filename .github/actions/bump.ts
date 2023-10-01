@@ -1,16 +1,16 @@
-#!/usr/bin/env -S tea deno run --allow-net --allow-run --allow-read --allow-write --allow-env --unstable
+#!/usr/bin/env -S pkgx deno run --allow-net --allow-run --allow-read --allow-write --allow-env --unstable
 
 import { backticks, run, panic } from "utils"
 import { basename } from "deno/path/mod.ts"
 import { crypto, toHashString } from "deno/crypto/mod.ts"
 
-const rootUrl = "https://github.com/teaxyz/homebrew-pkgs/releases/download"
+const rootUrl = "https://github.com/pkgxdev/homebrew-made/releases/download"
 
 const livecheck: LCResults[] = await (async () => {
   if (Deno.args[0]) {
     const [current, latest] = Deno.args
     return [{
-      formula: 'tea-cli',
+      formula: 'pkgx',
       version: {
         outdated: true,
         current, latest
@@ -23,7 +23,7 @@ const livecheck: LCResults[] = await (async () => {
     ]}))
   }
 })()
-// const livecheck: LCResults[] = JSON.parse(await backticks({ cmd: ["brew", "livecheck", "--quiet", "--newer-only", "--full-name", "--json", `./tea-cli.rb`] }))
+// const livecheck: LCResults[] = JSON.parse(await backticks({ cmd: ["brew", "livecheck", "--quiet", "--newer-only", "--full-name", "--json", `./pkgx.rb`] }))
 
 if (livecheck.length === 0) {
   console.log("No outdated packages")
@@ -98,7 +98,7 @@ async function bottle(newVersion: string): Promise<Bottle[]> {
   const bottles: Bottle[] = []
 
   for (const platform of platforms) {
-    const bottleUrl = `https://github.com/teaxyz/cli/releases/download/v${newVersion}/tea-${newVersion}+${platform}.tar.xz`
+    const bottleUrl = `https://github.com/pkgxdev/pkgx/releases/download/v${newVersion}/pkgx-${newVersion}+${platform}.tar.xz`
     const prefix = platform === "darwin+aarch64" ? "opt/homebrew" : "usr/local/Homebrew"
 
     // Download the tarball
@@ -107,13 +107,13 @@ async function bottle(newVersion: string): Promise<Bottle[]> {
 
     // Convert ArrayBuffer to Uint8Array for Deno.writeFile
     const uint8Array = new Uint8Array(file)
-    const binaryFileName = `tea-${newVersion}+${platform}.tar.xz`
+    const binaryFileName = `pkgx-${newVersion}+${platform}.tar.xz`
 
     // Save the binary to a file
     await Deno.writeFile(binaryFileName, uint8Array)
 
         // Build the directory structure
-    const cellarPath = `tea-cli/${newVersion}`
+    const cellarPath = `pkgx/${newVersion}`
     await run({ cmd: ["mkdir", "-p", `${cellarPath}/bin`] })
 
     // Unpack the binary
@@ -121,12 +121,12 @@ async function bottle(newVersion: string): Promise<Bottle[]> {
 
     // Create INSTALL_RECEIPT.json
     const receipt = {
-      formula: "TeaCli",
+      formula: "Pkgx",
       version: newVersion,
       built_as_bottle: true,
       plist: null,
       time: new Date().getTime(),
-      source_files: `/${prefix}/Library/Taps/teaxyz/cli/Formula/TeaCli.rb`,
+      source_files: `/${prefix}/Library/Taps/pkgxdev/pkgx/Formula/Pkgx.rb`,
       source_modified_time: new Date().getTime(),
       HEAD: "HEAD",
       stdlib: null,
@@ -136,7 +136,7 @@ async function bottle(newVersion: string): Promise<Bottle[]> {
 
     // Compress everything into a .tar.gz
     const platformTag = mapPlatformToBottleTag(platform)
-    const bottleFilename = `bottles/tea-cli-${newVersion}.${platformTag}.bottle.tar.gz`
+    const bottleFilename = `bottles/pkgx-${newVersion}.${platformTag}.bottle.tar.gz`
 
     await run({ cmd: ["tar", "-czf", bottleFilename, cellarPath] })
     await run({ cmd: ["rm", "-rf", cellarPath] })
@@ -166,7 +166,7 @@ function generateBottleBlock(bottles: Bottle[], version: string) {
     if (platform === "x86_64_linux") {
       bottleBlock += "" +
       "    # Linux bottles fail currently: patchelf breaks deno compiled binaries.\n" +
-      "    # https://github.com/teaxyz/brewkit/blob/main/share/brewkit/fix-elf.ts#L38-L42\n" +
+      "    # https://github.com/pkgxdev/brewkit/blob/main/share/brewkit/fix-elf.ts#L38-L42\n" +
       "    # and it's not possible to skip relocation in linuxbrew:\n" +
       "    # https://github.com/Homebrew/brew/blob/d1f60aea49d35fc0ba8f02a1f4fd26d0a369e071/Library/Homebrew/extend/os/linux/software_spec.rb\n" +
       `    #sha256 cellar: :any_skip_relocation, ${platform}: "${sha256}"\n`
