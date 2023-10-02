@@ -11,13 +11,13 @@ class Pkgx < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "c51d83149eb04360d3c887832f45cfe875b7640ebc281a88b608461491cbc198"
-    sha256 cellar: :any_skip_relocation, big_sur: "ca34c144b5af4dff7a69bc56906d5eff84cd0cb55ee9de65944ca70d0383d614"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "dd05ac86653a14076d6198dae84cc680acafad8e731301ef70e5313abbe193bd"
+    sha256 cellar: :any_skip_relocation, big_sur: "58897c76440901a38edc412f4ae62c7a6e053d1caa9ea18978b930aaa5247c30"
     # Linux bottles fail currently: patchelf breaks deno compiled binaries.
     # https://github.com/pkgxdev/brewkit/blob/main/share/brewkit/fix-elf.ts#L38-L42
     # and it's not possible to skip relocation in linuxbrew:
     # https://github.com/Homebrew/brew/blob/d1f60aea49d35fc0ba8f02a1f4fd26d0a369e071/Library/Homebrew/extend/os/linux/software_spec.rb
-    #sha256 cellar: :any_skip_relocation, x86_64_linux: "92d2b4a1f991a3b83ed6f21f898d904e7666eb63c8cf45cbc11f3cb3cc90a58b"
+    #sha256 cellar: :any_skip_relocation, x86_64_linux: "7b40ad798f6db8faab08ad16c3bb0874496e83be714d2a8f77cd54f60af34a31"
     root_url "https://github.com/pkgxdev/homebrew-made/releases/download/v1.0.0"
   end
 
