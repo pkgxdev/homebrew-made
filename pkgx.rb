@@ -34,6 +34,11 @@ class Pkgx < Formula
       try it out:
 
           pkgx node@18 --eval 'console.log("pkgx: run anything")'
+
+      shell integration:
+
+          pkgx integrate --dry-run
+          # ^^ https://docs.pkgx.sh/shell-integration
     EOS
   end
 
