@@ -22,6 +22,7 @@ class Pkgx < Formula
   end
 
   depends_on "deno" => :build
+  depends_on "unzip" => :build # deno >=1.39.1 uses unzip when remote-fetching their compilable runtime
 
   def install
     system "deno", "task", "compile"
