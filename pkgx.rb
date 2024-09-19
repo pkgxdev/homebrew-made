@@ -1,8 +1,8 @@
 class Pkgx < Formula
   desc "Run Anything"
   homepage "https://pkgx.sh"
-  url "https://github.com/pkgxdev/pkgx/releases/download/v1.2.0/pkgx-1.2.0.tar.xz"
-  sha256 "37355a604089fa90dd4c84fc6ee23fc6737d8f8ca1be906f0b63242eb523c577"
+  url "https://github.com/pkgxdev/pkgx/releases/download/v1.2.1/pkgx-1.2.1.tar.xz"
+  sha256 "d501c5aa42b7b97f47649509b403d0f4fdcda497f4fc22bdf5680f2691cbb793"
   license "Apache-2.0"
 
   livecheck do
@@ -11,14 +11,14 @@ class Pkgx < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "5675a76b408db09b5b427d458fdbb1e654d5ed13dff5b1bc234e952f9a1e5f6a"
-    sha256 cellar: :any_skip_relocation, big_sur: "5f30526773c855aaef9881e4182b3ecb69558408a56759a7a60b4d4fdedee44e"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "4a997db488ea3defc2d9dd0f9118d2ba91c686b29941aba738d1f0235a0979aa"
+    sha256 cellar: :any_skip_relocation, big_sur: "68e83ac156c7677bb619fc2cb73a43526abfcb8575e9869ca1f6b207ab062003"
     # Linux bottles fail currently: patchelf breaks deno compiled binaries.
     # https://github.com/pkgxdev/brewkit/blob/main/share/brewkit/fix-elf.ts#L38-L42
     # and it's not possible to skip relocation in linuxbrew:
     # https://github.com/Homebrew/brew/blob/d1f60aea49d35fc0ba8f02a1f4fd26d0a369e071/Library/Homebrew/extend/os/linux/software_spec.rb
-    #sha256 cellar: :any_skip_relocation, x86_64_linux: "37c0a0676363e914da4d5b2163a301bb0aa217f014384b43c13975a321194cf2"
-    root_url "https://github.com/pkgxdev/homebrew-made/releases/download/v1.2.0"
+    #sha256 cellar: :any_skip_relocation, x86_64_linux: "2242f72cb8cdff00385513d95a58f1daf3552a0090addb7fb03a34487198dbde"
+    root_url "https://github.com/pkgxdev/homebrew-made/releases/download/v1.2.1"
   end
 
   depends_on "deno" => :build
