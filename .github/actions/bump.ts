@@ -1,4 +1,4 @@
-#!/usr/bin/env -S pkgx deno run --allow-net --allow-run --allow-read --allow-write --allow-env --unstable
+#!/usr/bin/env -S pkgx deno run --allow-net --allow-run --allow-read --allow-write --allow-env
 
 import { backticks, run, panic } from "utils"
 import { basename } from "deno/path/mod.ts"

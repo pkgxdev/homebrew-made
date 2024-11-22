@@ -1,3 +1,20 @@
 {
-  "importMap": "https://raw.githubusercontent.com/pkgxdev/pkgx/v0.21/import-map.json"
+  "imports": {
+    "path": "https://raw.githubusercontent.com/pkgxdev/pkgx/v0.21/src/vendor/Path.ts",
+    "types": "https://raw.githubusercontent.com/pkgxdev/pkgx/v0.21/src/types.ts",
+    "hooks": "https://raw.githubusercontent.com/pkgxdev/pkgx/v0.21/src/hooks/index.ts",
+    "hooks/": "https://raw.githubusercontent.com/pkgxdev/pkgx/v0.21/src/hooks/",
+    "prefab": "https://raw.githubusercontent.com/pkgxdev/pkgx/v0.21/src/prefab/index.ts",
+    "prefab/": "https://raw.githubusercontent.com/pkgxdev/pkgx/v0.21/src/prefab/",
+    "deno/": "https://deno.land/std@0.173.0/",
+    "semver": "https://raw.githubusercontent.com/pkgxdev/pkgx/v0.21/src/utils/semver.ts",
+    "utils": "https://raw.githubusercontent.com/pkgxdev/pkgx/v0.21/src/utils/index.ts",
+    "utils/": "https://raw.githubusercontent.com/pkgxdev/pkgx/v0.21/src/utils/",
+    "is_what": "https://deno.land/x/is_what@v4.1.7/src/index.ts",
+    "cliffy/": "https://deno.land/x/cliffy@v0.25.2/",
+    "s3": "https://deno.land/x/s3@0.5.0/mod.ts",
+    "outdent": "https://deno.land/x/outdent@v0.8.0/mod.ts",
+    "sha256": "https://deno.land/std@0.160.0/hash/sha256.ts",
+    "rimbu/": "https://deno.land/x/rimbu@0.12.3/"
+  }
 }
