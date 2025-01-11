@@ -1,0 +1,14 @@
+on:
+  pull_request:
+    paths:
+      - pkgx.rb
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@master
+      - run: brew install --build-from-source ./pkgx.rb
+      - run: brew test pkgx
+      - run: brew audit pkgx

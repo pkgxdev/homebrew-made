@@ -23,24 +23,20 @@ class Pkgx < Formula
 
   depends_on "deno" => :build
   depends_on "unzip" => :build # deno >=1.39.1 uses unzip when remote-fetching their compilable runtime
+  depends_on "rust" => :build
 
-  def install
-    system "deno", "task", "compile"
-
-    bin.install "pkgx"
+  on_linux do
+    depends_on "sqlite"
   end
 
-  def caveats
-    <<~EOS
-      try it out:
-
-          pkgx node@18 --eval 'console.log("pkgx: run anything")'
-
-      shell integration:
-
-          pkgx integrate --dry-run
-          # ^^ https://docs.pkgx.sh/shell-integration
-    EOS
+  def install
+    if File.file? "Cargo.toml"
+      system "cargo", "build", "--release"
+      bin.install "target/release/pkgx"
+    else
+      system "deno", "task", "compile"
+      bin.install "pkgx"
+    end
   end
 
   test do
@@ -50,7 +46,7 @@ class Pkgx < Formula
     EOS
 
     with_env("PKGX_DIR" => testpath/".pkgx") do
-      assert_equal "hello, world", shell_output("#{bin}/pkgx '#{testpath}/hello.js'").chomp
+      assert_equal "hello, world", shell_output("#{bin}/pkgx deno run '#{testpath}/hello.js'").chomp
     end
   end
 end
