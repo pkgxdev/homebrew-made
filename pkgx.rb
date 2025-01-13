@@ -25,10 +25,6 @@ class Pkgx < Formula
   depends_on "unzip" => :build # deno >=1.39.1 uses unzip when remote-fetching their compilable runtime
   depends_on "rust" => :build
 
-  on_linux do
-    depends_on "sqlite"
-  end
-
   def install
     if File.file? "Cargo.toml"
       system "cargo", "build", "--release"

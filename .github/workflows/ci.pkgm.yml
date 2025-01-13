@@ -1,0 +1,14 @@
+on:
+  pull_request:
+    paths:
+      - pkgm.rb
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@master
+      - run: brew install --build-from-source ./pkgm.rb
+      - run: brew test pkgm
+      - run: brew audit pkgm
