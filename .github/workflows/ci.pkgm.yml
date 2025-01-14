@@ -1,3 +1,5 @@
+name: ci/pkgm
+
 on:
   pull_request:
     paths:

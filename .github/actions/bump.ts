@@ -163,16 +163,7 @@ function mapPlatformToBottleTag(platform: string): string {
 function generateBottleBlock(bottles: Bottle[], version: string) {
   let bottleBlock = "bottle do\n"
   for (const { platform, sha256 } of bottles) {
-    if (platform === "x86_64_linux") {
-      bottleBlock += "" +
-      "    # Linux bottles fail currently: patchelf breaks deno compiled binaries.\n" +
-      "    # https://github.com/pkgxdev/brewkit/blob/main/share/brewkit/fix-elf.ts#L38-L42\n" +
-      "    # and it's not possible to skip relocation in linuxbrew:\n" +
-      "    # https://github.com/Homebrew/brew/blob/d1f60aea49d35fc0ba8f02a1f4fd26d0a369e071/Library/Homebrew/extend/os/linux/software_spec.rb\n" +
-      `    #sha256 cellar: :any_skip_relocation, ${platform}: "${sha256}"\n`
-    } else {
-      bottleBlock += `    sha256 cellar: :any_skip_relocation, ${platform}: "${sha256}"\n`
-    }
+    bottleBlock += `    sha256 cellar: :any_skip_relocation, ${platform}: "${sha256}"\n`
   }
   bottleBlock += `    root_url "${rootUrl}/v${version}"\n`
   bottleBlock += "  end"

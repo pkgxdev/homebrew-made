@@ -1,5 +1,5 @@
 # h/t https://github.com/jonchang/homebrew-tap/blob/main/.github/workflows/bump.yml
-name: bump version
+name: bump n bottle
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: Homebrew/actions/setup-homebrew@master
-      - uses: pkgxdev/setup@v1
+      - uses: pkgxdev/setup@v2
 
       - run: .github/actions/bump.ts ${{ github.event.inputs.version }}
         id: bump
@@ -43,8 +43,17 @@ jobs:
           files: bottles/*
           fail_on_unmatched_files: true
           generate_release_notes: true
+        if: steps.bump.outputs.name
 
-      - name: test `brew install`
+  test:
+    needs: bump
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: Homebrew/actions/setup-homebrew@master
+      - name: brew install pkgxdev/made/pkgx
         run: |
-          brew install ./pkgx.rb
+          brew install pkgxdev/made/pkgx
           pkgx semverator satisfies ^1 1.0.0
