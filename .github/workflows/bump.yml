@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: Homebrew/actions/setup-homebrew@master
-      - uses: pkgxdev/setup@v1
+      - uses: pkgxdev/setup@v2
 
       - run: .github/actions/bump.ts ${{ github.event.inputs.version }}
         id: bump
