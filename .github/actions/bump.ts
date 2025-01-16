@@ -112,7 +112,7 @@ async function bottle(newVersion: string): Promise<Bottle[]> {
     // Save the binary to a file
     await Deno.writeFile(binaryFileName, uint8Array)
 
-        // Build the directory structure
+    // Build the directory structure
     const cellarPath = `pkgx/${newVersion}`
     await run({ cmd: ["mkdir", "-p", `${cellarPath}/bin`] })
 

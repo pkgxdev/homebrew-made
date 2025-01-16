@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  bump:
+  bump-n-bottle:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -36,24 +36,12 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
 
-      - uses: softprops/action-gh-release@v1
+      - uses: softprops/action-gh-release@v2
         with:
           name: ${{steps.bump.outputs.name}} v${{ steps.bump.outputs.version }}
           tag_name: v${{ steps.bump.outputs.version }}
           files: bottles/*
           fail_on_unmatched_files: true
+          make_latest: true
           generate_release_notes: true
         if: steps.bump.outputs.name
-
-  test:
-    needs: bump
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: Homebrew/actions/setup-homebrew@master
-      - name: brew install pkgxdev/made/pkgx
-        run: |
-          brew install pkgxdev/made/pkgx
-          pkgx semverator satisfies ^1 1.0.0

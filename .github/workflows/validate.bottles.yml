@@ -1,0 +1,32 @@
+name: validate bottles
+
+on:
+  workflow_dispatch:
+  release:
+    types:
+      - published
+      - edited
+
+jobs:
+  smoke:
+    runs-on: ${{ matrix.x.os }}
+    strategy:
+      matrix:
+        x:
+          - os: ubuntu-latest
+          - os: ubuntu-latest
+            container: ubuntu:focal
+          - os: macos-latest
+    container: ${{ matrix.x.container }}
+    steps:      # the “dedicated” homebrew setup action doesn't work in containers
+      - run: |
+          apt update --yes && apt install --yes build-essential procps curl file git
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          echo "/home/linuxbrew/.linuxbrew/bin" >> $GITHUB_PATH
+        if: matrix.x.container == 'ubuntu:focal'
+
+      - uses: Homebrew/actions/setup-homebrew@master
+        if: matrix.x.container != 'ubuntu:focal'
+
+      - run: brew install pkgxdev/made/pkgx
+      - run: pkgx semverator satisfies ^1 1.0.0
