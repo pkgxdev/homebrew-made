@@ -12,6 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pkgxdev/setup@v3
+
+      - run: git checkout 591bbfc206850d6be45976fce9682d99c8179927 -- ./pkg[xm].rb
       - run: .github/actions/bump.ts pkgx 2.1.1 2.1.2
       - run: .github/actions/bump.ts pkgm 0.3.0 0.3.1
 
