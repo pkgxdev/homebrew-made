@@ -1,0 +1,17 @@
+name: ci/bumper
+
+on:
+  pull_request:
+    paths:
+      - .github/actions/bump.ts
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: .github/actions/bump.ts pkgx 2.1.1 2.1.2
+      - run: .github/actions/bump.ts pkgm 0.3.0 0.3.1
+      - uses: actions/upload-artifact@v4
+        with:
+          path: '*.rb'
