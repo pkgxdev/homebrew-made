@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: pkgxdev/setup@v3
 
       - run: git checkout 591bbfc206850d6be45976fce9682d99c8179927 -- ./pkg[xm].rb
