@@ -4,13 +4,14 @@ import { backticks, run, panic } from "utils"
 import { basename } from "deno/path/mod.ts"
 import { crypto, toHashString } from "deno/crypto/mod.ts"
 
+const formula = Deno.args[0];
 const rootUrl = "https://github.com/pkgxdev/homebrew-made/releases/download"
 
 const livecheck: LCResults[] = await (async () => {
-  if (Deno.args[0]) {
-    const [current, latest] = Deno.args
+  if (Deno.args[1]) {
+    const [current, latest] = Deno.args.slice(1)
     return [{
-      formula: 'pkgx',
+      formula,
       version: {
         outdated: true,
         current, latest
@@ -43,17 +44,20 @@ for (const pkg of livecheck) {
     const name = basename(pkg.formula)
     const formula = await Deno.readTextFile(`${name}.rb`)
 
-    const url = formula.match(/  url "(.*)"/)?.[1]
+    const url = formula.match(/  url "(.*)"/)?.[1]!
     const newUrl = url.replaceAll(oldVersion, newVersion)
     const newSha = await sha256(newUrl)
 
-    const bottles = await bottle(newVersion)
+    let newFormula = formula.replaceAll(url, newUrl).replace(/  sha256 ".+"/, `  sha256 "${newSha}"`)
 
-    // Generate new bottle block.
-    const newBottleBlock = generateBottleBlock(bottles, newVersion)
+    if (formula == 'pkgx') {
+      const bottles = await bottle(newVersion)
 
-    const newFormula = formula.replaceAll(url, newUrl).replace(/  sha256 ".+"/, `  sha256 "${newSha}"`)
-                              .replace(/bottle do[\s\S]*?end$/m, newBottleBlock)
+      // Generate new bottle block.
+      const newBottleBlock = generateBottleBlock(bottles, newVersion)
+
+      newFormula = newFormula.replace(/bottle do[\s\S]*?end$/m, newBottleBlock)
+    }
 
     await Deno.writeTextFile(`${name}.rb`, newFormula)
 
