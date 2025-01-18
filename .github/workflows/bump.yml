@@ -10,6 +10,9 @@ on:
       version:
         description: current version & new version space separated
         required: false
+      formula:
+        default: pkgx
+        required: false
 
 concurrency:
   group: bump/${{ github.event.inputs.version || 'livecheck' }}
@@ -25,7 +28,7 @@ jobs:
       - uses: Homebrew/actions/setup-homebrew@master
       - uses: pkgxdev/setup@v2
 
-      - run: .github/actions/bump.ts ${{ github.event.inputs.version }}
+      - run: .github/actions/bump.ts ${{ github.event.inputs.formula }} ${{ github.event.inputs.version }}
         id: bump
         env:
           TAP: pkgxdev/made
