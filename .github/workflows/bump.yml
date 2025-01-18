@@ -2,9 +2,6 @@
 name: bump n bottle
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       version:
@@ -26,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: Homebrew/actions/setup-homebrew@master
-      - uses: pkgxdev/setup@v2
+      - uses: pkgxdev/setup@v3
 
       - run: .github/actions/bump.ts ${{ github.event.inputs.formula }} ${{ github.event.inputs.version }}
         id: bump
@@ -47,4 +44,4 @@ jobs:
           fail_on_unmatched_files: true
           make_latest: true
           generate_release_notes: true
-        if: steps.bump.outputs.name
+        if: steps.bump.outputs.name && github.event.inputs.formula == 'pkgx'
