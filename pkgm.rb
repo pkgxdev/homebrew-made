@@ -11,7 +11,7 @@ class Pkgm < Formula
   end
 
   depends_on "deno"
-  depends_on "pkgxdev/made/pkgx"
+  depends_on "pkgx"
 
   def install
     # use the brew deno rather than pkgx deno
