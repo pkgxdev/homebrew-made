@@ -16,7 +16,7 @@ class Pkgm < Formula
   def install
     # use the brew deno rather than pkgx deno
     # NOTE maybe pointless since internally it uses `pkgx deno` still, but we could fix that…
-    inreplace "pkgm", /pkgx deno.* run/, "deno run"
+    inreplace "pkgm", /pkgx --quiet deno.* run/, "deno run"
 
     bin.install("pkgm")
   end
