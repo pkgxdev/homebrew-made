@@ -50,7 +50,7 @@ for (const pkg of livecheck) {
 
     let newFormula = formula.replaceAll(url, newUrl).replace(/  sha256 ".+"/, `  sha256 "${newSha}"`)
 
-    if (formula == 'pkgx') {
+    if (name == 'pkgx') {
       const bottles = await bottle(newVersion)
 
       // Generate new bottle block.
@@ -66,7 +66,7 @@ for (const pkg of livecheck) {
       await run({ cmd: ["git", "commit", "-m", `bump ${name} from ${oldVersion} to ${newVersion}`] })
 
       const envFile = Deno.env.get("GITHUB_OUTPUT")!
-      await Deno.writeTextFile(envFile, `name=${name}\nversion=${newVersion}\n`, { append: true})
+      await Deno.writeTextFile(envFile, `name=${name}\nversion=${newVersion}\n`, { append: true })
     }
 
     console.log(`Bumped ${name} from ${oldVersion} to ${newVersion}`)
