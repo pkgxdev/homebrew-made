@@ -1,8 +1,8 @@
 class Pkgm < Formula
   desc "Install Anything"
   homepage "https://github.com/pkgxdev/pkgm"
-  sha256 "aab691fd374c82d8e1ae0c785c443702ead8bcb88e56f95879f0c32e5677591e"
-  url "https://github.com/pkgxdev/pkgm/releases/download/v0.5.0/pkgm-0.5.0.tgz"
+  sha256 "0cf1290190bc3a62641293dd10f9645e2bee69f309f5d8cd2b8afced48d30573"
+  url "https://github.com/pkgxdev/pkgm/releases/download/v0.6.0/pkgm-0.6.0.tgz"
   license "Apache-2.0"
 
   livecheck do
