@@ -1,8 +1,8 @@
 class Mash < Formula
   desc "Mash up millions of open source packages into monstrously powerful scripts"
   homepage "https://github.com/pkgxdev/mash"
-  url "https://github.com/pkgxdev/mash/releases/download/v0.3.0/mash-v0.3.0.sh"
-  sha256 "88b5319d8e5f9bd3c01ef9e29867ef75908b11acbd22c2b1dd8eba18677778e3"
+  url "https://github.com/pkgxdev/mash/releases/download/v0.3.1/mash-v0.3.1.sh"
+  sha256 "4cb0103f8ddb7cd0f6203e4ab935d2a80d41c70840336dd5c3ca92a2c1c6a29c"
   license "Apache-2.0"
 
   livecheck do
