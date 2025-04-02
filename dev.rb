@@ -1,8 +1,8 @@
 class Dev < Formula
   desc "Isolated `dev` environments"
   homepage "https://github.com/pkgxdev/dev"
-  url "https://github.com/pkgxdev/dev/archive/refs/tags/v1.5.0.tar.gz"
-  sha256 "9b534b52ab5b7472f3a620eed21b1e658c084f7a6b07583d1223139c76fb97ab"
+  url "https://github.com/pkgxdev/dev/archive/refs/tags/v1.6.0.tar.gz"
+  sha256 "3af67d58e69f66332639b492c108f757b591be85d0826ef35b14f3db60f669f7"
   license "Apache-2.0"
 
   livecheck do
