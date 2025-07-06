@@ -20,7 +20,7 @@ class Dev < Formula
     src.install("deno.json")
     src.install("deno.lock")
 
-    inreplace src/"app.ts", %r{/usr/bin/env -S pkgx deno.* run}, "#{HOMEBREW_PREFIX}/bin/deno run"
+    inreplace src/"app.ts", %r{/usr/bin/env -S pkgx.* deno.* run}, "#{HOMEBREW_PREFIX}/bin/deno run"
 
     bin.write_exec_script(src/"app.ts")
     FileUtils.mv bin.join("app.ts"), bin.join("dev")
