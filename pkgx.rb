@@ -1,8 +1,8 @@
 class Pkgx < Formula
   desc "Run Anything"
   homepage "https://pkgx.sh"
-  url "https://github.com/pkgxdev/pkgx/releases/download/v2.7.0/pkgx-2.7.0.tar.xz"
-  sha256 "abceecdde37c4648b5486c164b5ccbf8e443ffc2a9bf9263cc5bcaa2c2d58dec"
+  url "https://github.com/pkgxdev/pkgx/releases/download/v2.9.0/pkgx-2.9.0.tar.xz"
+  sha256 "05ffa54721cc79580cfd197a60d1580de169689d493480f3b1c21e34b85afa12"
   license "Apache-2.0"
 
   livecheck do
@@ -11,10 +11,10 @@ class Pkgx < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "7947e06855a1b2d441076337fbb511413ce05491c43965b5628e5715c4991181"
-    sha256 cellar: :any_skip_relocation, big_sur: "311a5b0ecaaf3ed404f9d67aac9ba93b48575050de5617e3b9fb33f404d84e88"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "31794ba3c0f4f585ddddb56004d16c7a12ffb632c5d7e03370487c9de66e7a2c"
-    root_url "https://github.com/pkgxdev/homebrew-made/releases/download/v2.7.0"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "ed344834e15259fae0684235b65a22388cf59924ad3baff63c62882b53bffb74"
+    sha256 cellar: :any_skip_relocation, big_sur: "27ebb3591eb6951ebefb9c466a03431adfaa3d479e80bfea69da9f3b917d43c7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "ecfb76a8753bfe0666e296b7666b0a85e904f79d3d2af872d4e01e8f0700a519"
+    root_url "https://github.com/pkgxdev/homebrew-made/releases/download/v2.9.0"
   end
 
   depends_on "deno" => :build
