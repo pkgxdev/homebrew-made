@@ -25,7 +25,7 @@ jobs:
           echo "/home/linuxbrew/.linuxbrew/bin" >> $GITHUB_PATH
         if: matrix.x.container == 'ubuntu:focal'
 
-      - uses: Homebrew/actions/setup-homebrew@master
+      - uses: Homebrew/actions/setup-homebrew@main
         if: matrix.x.container != 'ubuntu:focal'
 
       - run: brew install pkgxdev/made/pkgx

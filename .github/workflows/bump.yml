@@ -22,7 +22,7 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - uses: Homebrew/actions/setup-homebrew@master
+      - uses: Homebrew/actions/setup-homebrew@main
       - uses: pkgxdev/setup@v3
 
       - run: .github/actions/bump.ts ${{ github.event.inputs.formula }} ${{ github.event.inputs.version }}

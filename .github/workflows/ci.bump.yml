@@ -24,5 +24,9 @@ jobs:
           path: '*.rb'
           name: formulae
 
-      - uses: Homebrew/actions/setup-homebrew@master
-      - run: brew install ./pkgm.rb
+      - uses: Homebrew/actions/setup-homebrew@main
+      # Homebrew 7 refuses to install a formula from a file path, so put it in a local tap
+      - run: |
+          brew tap-new --no-git local/test
+          cp pkgm.rb "$(brew --repository local/test)/Formula/pkgm.rb"
+          brew install local/test/pkgm
